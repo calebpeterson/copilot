@@ -1,3 +1,5 @@
+// Code generator using langchain. Capable of generating multiple files.
+
 import * as dotenv from "dotenv";
 dotenv.config();
 

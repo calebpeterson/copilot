@@ -1,3 +1,5 @@
+// Code generator using the OpenAPI package directly
+
 import { Configuration, OpenAIApi } from "openai";
 
 const createPrompt = (specification) =>
