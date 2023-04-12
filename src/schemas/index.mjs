@@ -6,3 +6,7 @@ export const fileIntentSchema = z.object({
 });
 
 export const fileIntentsSchema = z.array(fileIntentSchema);
+
+export const refactorIntentSchema = z.object({
+  content: z.string({ description: "the refactored code" }),
+});

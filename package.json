@@ -9,11 +9,10 @@
     "dev": "node-dev src/index.mjs"
   },
   "dependencies": {
-    "body-parser": "^1.20.2",
     "chalk": "^5.2.0",
     "chalk-template": "^1.0.0",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2",
+    "fastify": "^4.15.0",
     "langchain": "^0.0.53",
     "lodash": "^4.17.21",
     "openai": "^3.2.1"

@@ -23,7 +23,13 @@ export const logFileIntents = (fileIntents) => {
   console.log();
 };
 
+export const logRefactorIntent = (refactorIntent) => {
+  console.log();
+  console.log(chalk`{underline {white Refactoring}}\n`);
+  console.log(indent(refactorIntent.content));
+};
+
 export const logError = (error) => {
-  console.error(chalk`{underline {orange Encountered an error}}\n`);
-  console.error(indent(error.message));
+  console.error(chalk`{underline {red Encountered an error}}\n`);
+  console.error(chalk`{red ${indent(error.stack)}}\n`);
 };

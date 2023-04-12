@@ -43,7 +43,7 @@ module.exports = async (selection) => {
 
 #### Usage
 
-1. Create a new empty file (or use an existing one)
+1. Create a new empty file (or use an existing one).
 2. Specify the code you want your Copilot to generate. For example:
 
 ```
@@ -56,3 +56,26 @@ generate tests in a file named "mytests.tests.txt".
 
 3. If the spec **is not** the only content in your file, then select only the specification.
 4. Run your **ScriptBox** code generation script.
+
+### Refactoring
+
+```js
+require("dotenv").config();
+
+const axios = require("axios");
+
+module.exports = async (selection) => {
+  const result = await axios.post(`${process.env.COPILOT}/refactor/v1`, {
+    specification: selection,
+  });
+
+  return result.data;
+};
+```
+
+#### Usage
+
+1. Write a comment at the top of the block of code you want refactored.
+2. Select the comment + relevant code.
+3. Run your **ScriptBox** code refactoring script.
+4. Verify the refactor meets your expectations.
