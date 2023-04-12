@@ -1,0 +1,24 @@
+{
+  "name": "alonzo",
+  "version": "1.0.0",
+  "main": "src/index.mjs",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.mjs",
+    "dev": "node-dev src/index.mjs"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chalk": "^5.2.0",
+    "chalk-template": "^1.0.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "langchain": "^0.0.53",
+    "lodash": "^4.17.21",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "node-dev": "^8.0.0"
+  }
+}
