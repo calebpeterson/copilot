@@ -5,8 +5,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node src/index.mjs",
-    "dev": "node-dev src/index.mjs"
+    "server:start": "node src/server.mjs",
+    "server:dev": "node-dev src/server.mjs",
+    "terminal:start": "node src/terminal.mjs",
+    "terminal:dev": "node-dev src/terminal.mjs"
   },
   "dependencies": {
     "chalk": "^5.2.0",
