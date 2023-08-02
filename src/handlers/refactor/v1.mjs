@@ -58,7 +58,7 @@ export const refactor = async (req, res) => {
     logError(error);
 
     res.status(500).json({
-      message: "Refactor failed.",
+      message: `Refactor failed: ${error.message}`,
       specification,
       error: error.message,
     });

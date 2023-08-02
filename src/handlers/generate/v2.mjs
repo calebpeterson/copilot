@@ -27,6 +27,8 @@ const formatInstructions = parser.getFormatInstructions();
 const translationPrompt = ChatPromptTemplate.fromPromptMessages([
   ...[
     "You are a helpful software development assistant using TypeScript, React, Recoil, and Next.js",
+    "Only use named imports from 'react'.",
+    "Only use named exports. Never export a default.",
     "Only generate tests if explicitly asked.",
     "When creating tests use 'jest', '@testing-library/react' and '@testing-library/react-hooks'.",
     "Write code using this specification:\n\n{specification}\n\n",
@@ -60,7 +62,7 @@ export const generate = async (req, res) => {
     logError(error);
 
     res.status(500).json({
-      message: "Generation failed.",
+      message: `Generation failed ${error.message}`,
       specification,
       error: error.message,
     });
