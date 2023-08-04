@@ -4,7 +4,7 @@
 
 Designed to play nicely with the [ScriptBox](https://marketplace.visualstudio.com/items?itemName=cubicle6.scriptbox) extension for VSCode.
 
-## ScriptBox scripts
+## ScriptBox Integration
 
 Presumes the following `package.json` is present in your `~/.scriptbox` directory:
 
@@ -79,3 +79,49 @@ module.exports = async (selection) => {
 2. Select the comment + relevant code.
 3. Run your **ScriptBox** code refactoring script.
 4. Verify the refactor meets your expectations.
+
+## Phoenix Integration
+
+The following addition to [Pheonix](https://kasper.github.io/phoenix/) will show a prompt on `⌘+P`. Non-empty entries will be injected into the `terminal:dev` instance of Copilot.
+
+```js
+// Inject a prompt into Copilot
+keys.push(
+  new Key("p", ["cmd"], async () => {
+    const query = await prompt({ placeholder: "▶ Copilot" });
+
+    if (query) {
+      Task.run(
+        "/usr/local/bin/node",
+        ["/Users/caleb/Workspace/copilot/src/inject.mjs", query],
+        (task) => {
+          if (task.status > 0) {
+            alert(task.error);
+          }
+        }
+      );
+    }
+  })
+);
+
+const prompt = ({ placeholder = "" } = {}) =>
+  new Promise((resolve, reject) => {
+    const screenFrame = Screen.main().flippedVisibleFrame();
+    const modal = new Modal();
+
+    modal.isInput = true;
+    modal.inputPlaceholder = placeholder;
+
+    modal.origin = {
+      x: screenFrame.width / 2 - modal.frame().width / 2,
+      y: screenFrame.height / 2 - modal.frame().height / 2,
+    };
+
+    modal.textDidCommit = (value, action) => {
+      modal.close();
+      resolve(value);
+    };
+
+    modal.show();
+  });
+```
